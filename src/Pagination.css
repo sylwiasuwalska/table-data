@@ -1,0 +1,42 @@
+.pagination {
+    display: inline-block;
+    padding-bottom: 2vh;
+    float: right;
+}
+
+.pagination p {
+    float: left;
+    display: inline-block;
+    margin: 8px;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 8px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #1a5276;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #d6eaf8;}
+
+
+@media only screen  and (max-width : 1130px) {
+
+    .pagination {
+        display: block;
+        float: left;
+    }
+
+    .pagination a {
+        padding: 5px 5px;
+    }
+
+    .pagination p {
+        margin: 5px;
+    }
+}
