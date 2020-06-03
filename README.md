@@ -10,15 +10,11 @@
 This project builds table for companies data, including: company id, name, city, total income, average income and last month income. 
 
 ## Live demo 
-You can find this project here: https://sylwiasuwalska.github.io/table-for-companies/ 
 
-![view_from_screen](./viewScreen.JPG)
 
 ## Technologies
 Project is created using:
-* ReactJS 16.13.1 with Hooks
-* axios
-* npm
+
 
 ## Features
 * displaying data fetched from APIs
@@ -32,7 +28,7 @@ To run this project, install it locally using npm:
 
 ```
 # Clone this repository
-$ git clone https://github.com/sylwiasuwalska/table-for-companies
+$ git clone git@github.com:sylwiasuwalska/table-data.git
 
 # Go into the repository directory
 
