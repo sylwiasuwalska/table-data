@@ -71,7 +71,7 @@ const Store = ({children}) => {
                             const dateMonth = date.getMonth() + 1;
                             const dateYear = date.getFullYear();
 
-                            if (todayMonth - dateMonth === 3 && todayYear === dateYear) {
+                            if (todayMonth - dateMonth === 5 && todayYear === dateYear) {
                                 total += parseFloat(currentValue.value);
                             }
                             return total;
