@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { dataPreparingContext, errorContext, stateContext } from "./Store";
+import { useHistory } from "react-router-dom";
 import Pagination from "./Pagination";
 import "../Table.css";
 import loader from "../ring.svg";
@@ -60,6 +61,12 @@ function Table() {
     });
     setData(filteredData);
   };
+  const history = useHistory();
+  const changePage = (id) => {
+    let path = `/${id}`;
+    history.push(path);
+    //console.log(id)
+  }
 
   const renderTableData = () => {
     //pagination
@@ -83,8 +90,8 @@ function Table() {
           <td key={`${id}.${name}`}>{name}</td>
           <td key={`${id}.${city}`}>{city}</td>
           <td key={`${id}.${totalIncome}`}>{totalIncome}</td>
-          <td key={`${id}.${averageIncome}`}>{averageIncome}</td>
-          <td key={`${id}.${lastMonthIncome}`}>{lastMonthIncome}</td>
+          <td key={`${id}.details`}><button onClick={()=> changePage(id)}>See details</button></td>
+
         </tr>
       );
     });
@@ -180,21 +187,12 @@ function Table() {
               <th>
                 <button
                   type="button"
-                  onClick={() => sortByField("averageIncome")}
-                  className={getSortIndicator("averageIncome")}
+
                 >
-                  Average Income
+                  See details
                 </button>
               </th>
-              <th>
-                <button
-                  type="button"
-                  onClick={() => sortByField("lastMonthIncome")}
-                  className={getSortIndicator("lastMonthIncome")}
-                >
-                  Last Month Income
-                </button>
-              </th>
+
             </tr>
           </thead>
           <tbody>{renderTableData()}</tbody>
