@@ -61,7 +61,7 @@ function Table() {
         setData(filteredData);
     };
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    //const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const renderTableData = () => {
         //pagination
@@ -132,7 +132,7 @@ function Table() {
                     <Pagination
                         rowsPerPage={rowsPerPage}
                         totalRows={state.length}
-                        paginate={paginate}
+                        setCurrentPage={setCurrentPage}
                         currentPage={currentPage}
                     />
                 </div>
