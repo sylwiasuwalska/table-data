@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { dataPreparingContext, errorContext, stateContext } from "./Store";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import "../Table.css";
 import loader from "../ring.svg";
@@ -61,12 +61,6 @@ function Table() {
     });
     setData(filteredData);
   };
-  const history = useHistory();
-  const changePage = (id) => {
-    let path = `/${id}`;
-    history.push(path);
-    //console.log(id)
-  }
 
   const renderTableData = () => {
     //pagination
@@ -90,8 +84,11 @@ function Table() {
           <td key={`${id}.${name}`}>{name}</td>
           <td key={`${id}.${city}`}>{city}</td>
           <td key={`${id}.${totalIncome}`}>{totalIncome}</td>
-          <td key={`${id}.details`}><button onClick={()=> changePage(id)}>See details</button></td>
-
+          <td key={`${id}.details`}>
+            <Link to={`/${id}`}>
+              <button> &#8594;</button>
+            </Link>
+          </td>
         </tr>
       );
     });
@@ -107,11 +104,11 @@ function Table() {
     }
   }, [state]);
 
-    useEffect(() => {
-        sortByField("totalIncome");
-    }, [dataPreparing]);
+  useEffect(() => {
+    sortByField("totalIncome");
+  }, [dataPreparing]);
 
-    //preventing from render when server doesn't respond
+  //preventing from render when server doesn't respond
   if (error) {
     return (
       <div>
@@ -124,7 +121,12 @@ function Table() {
   if (dataPreparing) {
     return (
       <div>
-        <img src={loader} alt="loading_indicator" height="100px" width="100px" />
+        <img
+          src={loader}
+          alt="loading_indicator"
+          height="100px"
+          width="100px"
+        />
         <p>Preparing your data. Please wait.</p>
       </div>
     );
@@ -185,14 +187,8 @@ function Table() {
                 </button>
               </th>
               <th>
-                <button
-                  type="button"
-
-                >
-                  See details
-                </button>
+                <button type="button">See details</button>
               </th>
-
             </tr>
           </thead>
           <tbody>{renderTableData()}</tbody>
