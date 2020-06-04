@@ -30,6 +30,7 @@ button {
     color: white;
     font-size: 1em;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 button.ascending::after {
