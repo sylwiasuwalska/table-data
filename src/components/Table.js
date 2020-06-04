@@ -18,7 +18,7 @@ function Table() {
     const [filterWord, setFilterWord] = useState();
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [rowsPerPage] = useState(20);
+    const [rowsPerPage] = useState(15);
 
     //sorting
 
@@ -131,7 +131,7 @@ function Table() {
                     />
                     <Pagination
                         rowsPerPage={rowsPerPage}
-                        totalRows={state.length}
+                        totalRows={data.length}
                         setCurrentPage={setCurrentPage}
                         currentPage={currentPage}
                     />
