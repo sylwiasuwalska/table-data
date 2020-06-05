@@ -1,22 +1,24 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { dataPreparingContext, errorContext, stateContext } from "./Store";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+
 import Pagination from "./Pagination";
 import "../Table.css";
 import loader from "../ring.svg";
 import Filtering from "./Filtering";
 
-function Table() {
+function Table(props) {
+  useEffect(() => props.setActualLocation(props.history.location.pathname), []);
+
   const state = useContext(stateContext);
   const error = useContext(errorContext);
   const dataPreparing = useContext(dataPreparingContext);
 
   const [data, setData] = useState([]);
-
   const [sortDirection, setSortDirection] = useState("ascending");
   const [fieldToSort, setFieldToSort] = useState();
 
-  const [filterWord, setFilterWord] = useState();
+  const [filterWord, setFilterWord] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(15);
@@ -98,15 +100,17 @@ function Table() {
     filterList(state);
   }, [filterWord]);
 
+
   useEffect(() => {
     if (state) {
       setData(state);
     }
-  }, [state]);
+  }, [state, props.actualLocation]);
 
   useEffect(() => {
     sortByField("totalIncome");
   }, [dataPreparing]);
+
 
   //preventing from render when server doesn't respond
   if (error) {
