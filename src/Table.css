@@ -103,11 +103,4 @@ tr:nth-child(odd) {
         content: "Total Income";
     }
 
-    td:nth-of-type(5):before {
-        content: "Average Income";
-    }
-
-    td:nth-of-type(6):before {
-        content: "Last Month Income";
-    }
 }

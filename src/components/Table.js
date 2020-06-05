@@ -76,10 +76,8 @@ function Table(props) {
         name,
         city,
         totalIncome,
-        averageIncome,
-        lastMonthIncome,
       } = data;
-
+//&#8594;
       return (
         <tr key={`row ${id}`}>
           <td key={`${id}.${id}`}>{id}</td>
@@ -88,7 +86,7 @@ function Table(props) {
           <td key={`${id}.${totalIncome}`}>{totalIncome}</td>
           <td key={`${id}.details`}>
             <Link to={`/${id}`}>
-              <button> &#8594;</button>
+              <button>View details</button>
             </Link>
           </td>
         </tr>
@@ -191,7 +189,7 @@ function Table(props) {
                 </button>
               </th>
               <th>
-                <button type="button">See details</button>
+                <button type="button">See details:</button>
               </th>
             </tr>
           </thead>
