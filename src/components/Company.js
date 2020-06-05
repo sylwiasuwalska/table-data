@@ -81,7 +81,7 @@ function Company(props) {
   );
   console.log(numberOfMonthsInRange)
   const averageIncomeInRange =
-    totalIncomeInRange / numberOfMonthsInRange.toFixed(2);
+      (totalIncomeInRange / numberOfMonthsInRange).toFixed(2);
 
   const handleSubmit = (e) => {
     e.preventDefault();
