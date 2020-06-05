@@ -2,17 +2,28 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { stateContext } from "./Store";
 import { useHistory } from "react-router-dom";
+import moment from 'moment';
 
 function Company(props) {
   useEffect(() => props.setActualLocation(props.history.location.pathname), []);
   const state = useContext(stateContext);
   const [incomeData, setIncomeData] = useState([]);
+  const [isDataReady, setIsDataReady] = useState(false);
+  const [startDate, setStartDate] = useState("")
+    const [endDate, setEndDate] = useState("")
 
   const fetchData = (id) => {
     axios
       .get(`https://recruitment.hal.skygate.io/incomes/${id}`)
       .then((response) => {
-        setIncomeData(response.data.incomes);
+        const sortedIncomes = response.data.incomes.sort((a, b) => {
+          let dateA = new Date(a.date);
+          let dateB = new Date(b.date);
+          return dateA > dateB ? 1 : -1;
+        });
+        console.log(sortedIncomes);
+        setIncomeData(sortedIncomes);
+        setIsDataReady(true);
       });
 
     //todo handle error
@@ -44,17 +55,56 @@ function Company(props) {
       );
     });
 
-
   useEffect(() => {
     fetchData(props.match.params.id);
-  },[]);
+  }, []);
 
   let history = useHistory();
+  console.log("start");
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(e)
+  }
+  const handleChange = (e) => {
+      if (e.target.name==="start") {
+          setStartDate(e.target.value)
+      }
+      if (e.target.name==="end") {
+          setEndDate(e.target.value)
+      }
+  }
+
 
   return (
     <>
-      <button onClick={() => history.goBack()}> ← take me back</button>
       <div>{company}</div>
+      {isDataReady && (
+        <form onSubmit={handleSubmit}>
+          <label>
+              <p>Start Date - first possible: {`${moment(incomeData[0].date).format('YYYY-MM-DD')}`}</p>
+            <input
+              type="date"
+              name="start"
+              min={`${moment(incomeData[0].date).format('YYYY-MM-DD')}`}
+              max={`${moment(incomeData[incomeData.length-1].date).format('YYYY-MM-DD')}`}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+              <p>End Date - last possible {`${moment(incomeData[incomeData.length-1].date).format('YYYY-MM-DD')}`}</p>
+            <input
+              type="date"
+              name="end"
+              min={`${moment(incomeData[0].date).format('YYYY-MM-DD')}`}
+              max={`${moment(incomeData[incomeData.length-1].date).format('YYYY-MM-DD')}`}
+              onChange={handleChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      )}
+      <button onClick={() => history.goBack()}> ← take me back</button>
     </>
   );
 }
