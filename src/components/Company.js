@@ -75,6 +75,14 @@ function Company(props) {
     }, 0)
     .toFixed(2);
 
+  const numberOfMonthsInRange = moment(endDate).diff(
+    moment(startDate),
+    "months"
+  );
+  console.log(numberOfMonthsInRange)
+  const averageIncomeInRange =
+    totalIncomeInRange / numberOfMonthsInRange.toFixed(2);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -102,56 +110,54 @@ function Company(props) {
   if (isDataReady) {
     return (
       <>
-        <div>{company}</div>
-        {isDataReady && (
-          <div>
-            <form onSubmit={handleSubmit}>
-              <label>
-                <p>
-                  Start Date - first possible:{" "}
-                  {`${moment(incomeData[0].date).format("YYYY-MM-DD")}`}
-                </p>
-                <input
-                  type="date"
-                  name="start"
-                  min={`${moment(incomeData[0].date).format("YYYY-MM-DD")}`}
-                  max={`${moment(incomeData[incomeData.length - 1].date).format(
-                    "YYYY-MM-DD"
-                  )}`}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                <p>
-                  End Date - last possible{" "}
-                  {`${moment(incomeData[incomeData.length - 1].date).format(
-                    "YYYY-MM-DD"
-                  )}`}
-                </p>
-                <input
-                  type="date"
-                  name="end"
-                  min={`${moment(incomeData[0].date).format("YYYY-MM-DD")}`}
-                  max={`${moment(incomeData[incomeData.length - 1].date).format(
-                    "YYYY-MM-DD"
-                  )}`}
-                  onChange={handleChange}
-                />
-              </label>
-            </form>
+        <div className="companyView">
+          <div>{company}</div>
+          {isDataReady && (
             <div>
-              <p>
-                Incomes between dates:{" "}
-                {`${moment(incomeData[0].date).format("YYYY-MM-DD")}`} and{" "}
-                {`${moment(incomeData[incomeData.length - 1].date).format(
-                  "YYYY-MM-DD"
-                )}`}
-              </p>
-              <p>Total: {totalIncomeInRange}</p>
-              <p>Average:</p>
+              <form onSubmit={handleSubmit}>
+                <label>
+                  <p>
+                    Start Date - first possible:{" "}
+                    {`${moment(incomeData[0].date).format("YYYY-MM-DD")}`}
+                  </p>
+                  <input
+                    type="date"
+                    name="start"
+                    min={`${moment(incomeData[0].date).format("YYYY-MM-DD")}`}
+                    max={`${moment(
+                      incomeData[incomeData.length - 1].date
+                    ).format("YYYY-MM-DD")}`}
+                    onChange={handleChange}
+                  />
+                </label>
+                <label>
+                  <p>
+                    End Date - last possible{" "}
+                    {`${moment(incomeData[incomeData.length - 1].date).format(
+                      "YYYY-MM-DD"
+                    )}`}
+                  </p>
+                  <input
+                    type="date"
+                    name="end"
+                    min={`${moment(incomeData[0].date).format("YYYY-MM-DD")}`}
+                    max={`${moment(
+                      incomeData[incomeData.length - 1].date
+                    ).format("YYYY-MM-DD")}`}
+                    onChange={handleChange}
+                  />
+                </label>
+              </form>
+              <div>
+                <p>
+                  Incomes between dates: {`${startDate}`} and {`${endDate}`}
+                </p>
+                <p>Total: {totalIncomeInRange}</p>
+                <p>Average: {averageIncomeInRange}</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
         <button onClick={() => history.goBack()}> ← take me back</button>
       </>
     );
