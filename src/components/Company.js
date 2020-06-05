@@ -153,7 +153,7 @@ function Company(props) {
                   Incomes between dates: {`${startDate}`} and {`${endDate}`}
                 </p>
                 <p>Total: {totalIncomeInRange}</p>
-                <p>Average: {averageIncomeInRange}</p>
+                <p>Average: {averageIncomeInRange=="Infinity" ? "Choose at least one month range" : averageIncomeInRange}</p>
               </div>
             </div>
           )}
