@@ -49,6 +49,21 @@ tr:nth-child(odd) {
   background-color: #d6eaf8;
 }
 
+.companyView {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.companyView button {
+}
+
+.incomeData {
+  width: 30%;
+  margin: 5px;
+}
+
+
 @media only screen and (max-width: 760px),
   (min-device-width: 768px) and (max-device-width: 1024px) {
   table,
@@ -99,18 +114,13 @@ tr:nth-child(odd) {
   td:nth-of-type(4):before {
     content: "Total Income";
   }
+
+  .companyView {
+    display: block;
+  }
+
+  .incomeData {
+    width: 100%;
+  }
 }
 
-.companyView {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.companyView button {
-}
-
-.incomeData {
-  width: 30%;
-  margin: 5px;
-}

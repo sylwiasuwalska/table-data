@@ -7,21 +7,26 @@
 * [Sources](#sources)
 
 ## General info
-This project builds table for companies data, including: company id, name, city, total income, average income and last month income. 
+This project builds table for companies data, including: company id, name, city, total income and view of each company.
 
 ## Live demo 
 
 
 ## Technologies
 Project is created using:
+*ReactJS
+*axios
 
 
 ## Features
 * displaying data fetched from APIs
 * sorting by ascending or descending order after click on header by given column with indicators of sort order
 * filtering by all fields of table
-* responsive layout for comfortable viewing from smaller devices
 * pagination
+* company view with income data
+* range of calculated data chosen by user
+* responsive layout for comfortable viewing from smaller devices
+
 	
 ## Setup
 To run this project, install it locally using npm:

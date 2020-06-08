@@ -149,12 +149,11 @@ function Company(props) {
                 </label>
               </form>
               <div className="incomeData">
+                <p>Incomes between dates: </p>
                 <p>
-                  Incomes between dates:{" "}
-                  <p>
-                    {`${startDate}`} and {`${endDate}`}
-                  </p>
+                  {`${startDate}`} and {`${endDate}`}
                 </p>
+
                 <p>Total: {totalIncomeInRange}</p>
                 <p>
                   Average:{" "}
