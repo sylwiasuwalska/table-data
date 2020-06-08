@@ -19,7 +19,7 @@ function App() {
           <Switch>
             <Route
               exact
-              path="/"
+              path="/table-data"
               render={(props) => (
                 <Table
                   actualLocation={actualLocation}
