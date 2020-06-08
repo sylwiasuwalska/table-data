@@ -10,6 +10,7 @@
 This project builds table for companies data, including: company id, name, city, total income and view of each company.
 
 ## Live demo 
+https://sylwiasuwalska.github.io/table-data/
 
 
 ## Technologies
