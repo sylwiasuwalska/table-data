@@ -189,7 +189,7 @@ function Table(props) {
                 </button>
               </th>
               <th>
-                <button type="button">See details:</button>
+                <button type="button">Details</button>
               </th>
             </tr>
           </thead>

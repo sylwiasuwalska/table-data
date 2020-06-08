@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+
 .App {
-    margin: 0 auto;
-    width: 80%;
-    text-align: center;
-    box-sizing: border-box;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 }

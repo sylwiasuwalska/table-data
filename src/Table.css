@@ -102,10 +102,15 @@ tr:nth-child(odd) {
 }
 
 .companyView {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .companyView button {
+}
 
+.incomeData {
+  width: 30%;
+  margin: 5px;
 }

@@ -79,9 +79,10 @@ function Company(props) {
     moment(startDate),
     "months"
   );
-  console.log(numberOfMonthsInRange)
-  const averageIncomeInRange =
-      (totalIncomeInRange / numberOfMonthsInRange).toFixed(2);
+
+  const averageIncomeInRange = (
+    totalIncomeInRange / numberOfMonthsInRange
+  ).toFixed(2);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -90,7 +91,6 @@ function Company(props) {
   const handleChange = (e) => {
     if (e.target.name === "start") {
       setStartDate(e.target.value);
-      console.log("here");
     }
     if (e.target.name === "end") {
       setEndDate(e.target.value);
@@ -111,10 +111,10 @@ function Company(props) {
     return (
       <>
         <div className="companyView">
-          <div>{company}</div>
+          <div className="incomeData">{company}</div>
           {isDataReady && (
-            <div>
-              <form onSubmit={handleSubmit}>
+            <>
+              <form onSubmit={handleSubmit} className="incomeData">
                 <label>
                   <p>
                     Start Date - first possible:{" "}
@@ -148,14 +148,22 @@ function Company(props) {
                   />
                 </label>
               </form>
-              <div>
+              <div className="incomeData">
                 <p>
-                  Incomes between dates: {`${startDate}`} and {`${endDate}`}
+                  Incomes between dates:{" "}
+                  <p>
+                    {`${startDate}`} and {`${endDate}`}
+                  </p>
                 </p>
                 <p>Total: {totalIncomeInRange}</p>
-                <p>Average: {averageIncomeInRange=="Infinity" ? "Choose at least one month range" : averageIncomeInRange}</p>
+                <p>
+                  Average:{" "}
+                  {averageIncomeInRange == "Infinity"
+                    ? "Choose at least one month range"
+                    : averageIncomeInRange}
+                </p>
               </div>
-            </div>
+            </>
           )}
         </div>
         <button onClick={() => history.goBack()}> ← take me back</button>
