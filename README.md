@@ -14,8 +14,8 @@ This project builds table for companies data, including: company id, name, city,
 
 ## Technologies
 Project is created using:
-*ReactJS
-*axios
+* ReactJS
+* axios
 
 
 ## Features
